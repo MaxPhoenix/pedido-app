@@ -1,0 +1,32 @@
+<div class="m-5">
+<form class="needs-validation" novalidate >
+    <div class="form-group">
+      <label for="formGroupExampleInput">Nombre</label>
+      <input [(ngModel)]="pedido.nombre" type="text" class="form-control" required maxlength="100" placeholder="Nombre del Pedido"  name ="nombre">
+      <div *ngIf = "!pedido.nombre" class="col-sm">
+        <small id="passwordHelp" class="text-danger">
+         El Pedido debe tener un nombre.
+        </small>      
+      </div>
+      <div *ngIf = "pedido.nombre.length > 100" class="col-sm-3">
+        <small id="passwordHelp" class="text-danger">
+         El Pedido debe tener un nombre de a lo sumo 100 caracteres.
+        </small>      
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Monto</label>
+      <input type="text" class="form-control" required placeholder="Monto del Pedido" [(ngModel)]="pedido.monto" name ="monto">
+      <div *ngIf = "!pedido.monto || pedido.monto < 0" class="col-sm">
+        <small id="passwordHelp" class="text-danger">
+         El Pedido debe tener un monto mayor a cero.
+        </small>      
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Descuento</label>
+        <input type="text" class="form-control" placeholder="Descuento del Pedido" [(ngModel)]="pedido.descuento"  name ="descuento">
+    </div>
+    <button type="button" (click)="addPedido()" class="btn btn-primary">Agregar</button>
+  </form>
+</div>
